@@ -8,14 +8,23 @@ body{
   
 }
 
-#buttonSign{
+#buttonSignUp{
     background-color:#253f3f ;
     border-radius: 5rem;
 }
 
-#email{
+.field{
     background-color: #F0E2C6;
 }
-#password{
+#postal{
+    width: 100%;
     background-color: #F0E2C6;
+    height: 3rem;
+    margin-top: 0.5rem;
+}
+
+#message{
+   padding-bottom: 0;
+   margin-bottom: 0;
+
 }

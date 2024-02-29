@@ -12,8 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import './login.css'
-import { logIn } from '../../services/loginServices';
+import './signUp.css'
+// import { logIn } from '../../services/loginServices';
 
 function Copyright(props) {
   return (
@@ -32,16 +32,19 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function Login() {
+export default function Signup() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const credentials = {
+        name: data.get('name'),
         email: data.get('email'),
         password: data.get('password'),
+        direction: data.get('direction'),
+        postal_code: data.get('postal_code')
     }
     
-logIn(credentials)
+    Signup(credentials)
 
   };
 
@@ -61,19 +64,20 @@ logIn(credentials)
             <LockOutlinedIcon />
           </Avatar>
           <Typography  component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
+          <TextField
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              className="field"
+              label="name"
+              name="name"
+              autoComplete="name"
               autoFocus
             />
+        
             <TextField
               margin="normal"
               required
@@ -81,9 +85,41 @@ logIn(credentials)
               name="password"
               label="Password"
               type="password"
-              id="password"
+              className="field"
               autoComplete="current-password"
             />
+
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              className="field"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+              <TextField
+              margin="normal"
+              required
+              fullWidth
+              className="field"
+              label="Direction"
+              name="direction"
+              autoComplete="direction"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              className="field"
+              label="Postal Code"
+              name="postal_code"
+              autoComplete="postal-code"
+              autoFocus
+           
+/>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -95,16 +131,21 @@ logIn(credentials)
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Sign Up
             </Button>
-            <Grid container>
-      
-              <Grid item>
-                <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
+            <div>
+            <h3 id='message'>Do have an account? Sign in</h3>
+            <Button
+              type="submit"
+              id='buttonSignUp'
+              fullWidth
+              href="/login" 
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign in
+            </Button>
+            </div>
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
