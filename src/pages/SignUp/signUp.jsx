@@ -37,8 +37,11 @@ export default function Signup() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const credentials = {
+        name: data.get('name'),
         email: data.get('email'),
         password: data.get('password'),
+        direction: data.get('direction'),
+        postal_code: data.get('postal_code')
     }
     
     Signup(credentials)
@@ -61,19 +64,20 @@ export default function Signup() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography  component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
+          <TextField
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              className="field"
+              label="name"
+              name="name"
+              autoComplete="name"
               autoFocus
             />
+        
             <TextField
               margin="normal"
               required
@@ -81,9 +85,41 @@ export default function Signup() {
               name="password"
               label="Password"
               type="password"
-              id="password"
+              className="field"
               autoComplete="current-password"
             />
+
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              className="field"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+              <TextField
+              margin="normal"
+              required
+              fullWidth
+              className="field"
+              label="Direction"
+              name="direction"
+              autoComplete="direction"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              className="field"
+              label="Postal Code"
+              name="postal_code"
+              autoComplete="postal-code"
+              autoFocus
+           
+/>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -95,20 +131,21 @@ export default function Signup() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Sign Up
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
+            <div>
+            <h3 id='message'>Do have an account? Sign in</h3>
+            <Button
+              type="submit"
+              id='buttonSignUp'
+              fullWidth
+              href="/login" 
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign in
+            </Button>
+            </div>
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />

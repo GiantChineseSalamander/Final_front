@@ -1,0 +1,30 @@
+body{
+    background-image: url(../../..//img/Fondo.webp);
+}
+
+#form{
+    background-color: rgba(211, 209, 187, 0.7);
+    border-radius: 2rem;
+  
+}
+
+#buttonSignUp{
+    background-color:#253f3f ;
+    border-radius: 5rem;
+}
+
+.field{
+    background-color: #F0E2C6;
+}
+#postal{
+    width: 100%;
+    background-color: #F0E2C6;
+    height: 3rem;
+    margin-top: 0.5rem;
+}
+
+#message{
+   padding-bottom: 0;
+   margin-bottom: 0;
+
+}
